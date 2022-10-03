@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1664801124 source:d:\computer graphics\mykitchen\main.cpp
+1664812109 source:d:\computer graphics\mykitchen\main.cpp
 	<GL/gl.h>
 	<GL/glu.h>
 	<GL/glut.h>
@@ -8,6 +8,7 @@
 	"geometry.h"
 	"primitives.h"
 	"linearMotion.h"
+	"angularMotion.h"
 	"Room.h"
 	"light.h"
 
@@ -910,9 +911,11 @@
 
 1664775050 d:\computer graphics\mykitchen\linearmotion.h
 
-1664775009 d:\computer graphics\mykitchen\geometry.h
+1664812068 d:\computer graphics\mykitchen\geometry.h
 
 1664771280 d:\computer graphics\mykitchen\fan.h
 
-1664801420 d:\computer graphics\mykitchen\light.h
+1664808557 d:\computer graphics\mykitchen\light.h
+
+1664812996 d:\computer graphics\mykitchen\angularmotion.h
 

@@ -1,3 +1,4 @@
+const float PI = acos(-1.0);
 float dotProduct(float a[], float b[]) {
     return a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
 }
@@ -39,4 +40,15 @@ void makeUnit(float a[]) {
     a[0] /= mag;
     a[1] /= mag;
     a[2] /= mag;
+}
+
+
+void multiplyMatrix(GLfloat M[][4], GLfloat P[4][1], GLfloat res[4][1]) {
+    for (int i = 0;i < 4;i++) {
+        for (int j = 0;j < 1;j++) {
+            for (int k = 0;k < 4;k++) {
+                res[i][j] = res[i][j] + M[i][k] * P[k][j];
+            }
+        }
+    }
 }

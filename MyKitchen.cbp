@@ -43,7 +43,10 @@
 			<Add directory="C:/Program Files/CodeBlocks/MinGW/x86_64-w64-mingw32/lib" />
 		</Linker>
 		<Unit filename="Room.h" />
+		<Unit filename="angularMotion.h" />
+		<Unit filename="fan.h" />
 		<Unit filename="geometry.h" />
+		<Unit filename="light.h" />
 		<Unit filename="linearMotion.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="primitives.h" />

@@ -6,10 +6,10 @@
 #include "geometry.h"
 #include "primitives.h"
 #include "linearMotion.h"
+#include "angularMotion.h"
 #include "Room.h"
 #include "light.h"
 using namespace std;
-const float PI = acos(-1.0);
 const float eps = 1e-6;
 /*------Global Variables------*/
 //Eye Positions
@@ -22,6 +22,7 @@ GLfloat look[3]={0,20,40};
 GLfloat up[3]={0,1,0};
 float fovy=90;
 float deg;
+float alpha,bita,theta;
 void displayFunction() {
     // Clear Current Buffer
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -47,7 +48,7 @@ void displayFunction() {
 
     //lower corner and height,width of view port.
     glViewport(0,0,1100,700);
-    glRotatef(deg,0,0,1);
+    //glRotatef(deg,0,0,1);
     // Draw Main Axis for better understanding
     drawFloor();
     drawSideWalls();
@@ -68,6 +69,8 @@ void keyBoardFunction(unsigned char key,int x,int y) {
     case '-':
         zoomOut(fovy);
         break;
+    case '4':
+        Yaw(eye,look,up,bita);
     }
 }
 void idleFunction() {
