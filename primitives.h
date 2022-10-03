@@ -13,7 +13,7 @@ void drawLine(GLfloat A[],GLfloat B[],const GLfloat Color[]) {
 void drawQuad(GLfloat A[],GLfloat B[],GLfloat C[],GLfloat D[],GLfloat color[]) {
     glPushMatrix();
     GLfloat no_mat[] = { 0.0, 0.0, 0.0, 1.0 };
-    GLfloat mat_ambient[] = { 0, 0.0, 0.0, 1.0 };
+    GLfloat mat_ambient[] = { color[0], color[1],color[2], 1.0 };
     GLfloat mat_diffuse[] = { color[0], color[1],color[2], 1.0 };
     GLfloat mat_specular[] = { color[0], color[1],color[2], 1.0 };
     GLfloat mat_shininess[] = {60};
@@ -78,12 +78,12 @@ void drawCube(GLfloat color[]) {
     };
 
     GLubyte index[6][4] = {
-        {0, 1, 2, 3},
+        {3, 2, 1, 0},
         {4, 5, 6, 7},
-        {0, 1, 5, 4},
-        {3, 2, 6, 7},
-        {0, 3, 7, 4},
-        {1, 2, 6, 5}
+        {5, 1, 0, 4},
+        {7, 6, 2, 3},
+        {7, 3, 0, 4},
+        {1, 2, 6, 5,}
     };
     int comb[]= {0,1,2,0,1,0};
     for(int i=0; i<6; i++) {

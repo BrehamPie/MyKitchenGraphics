@@ -7,6 +7,7 @@
 #include "primitives.h"
 #include "linearMotion.h"
 #include "Room.h"
+#include "light.h"
 using namespace std;
 const float PI = acos(-1.0);
 const float eps = 1e-6;
@@ -20,6 +21,7 @@ GLfloat look[3]={0,20,40};
 //
 GLfloat up[3]={0,1,0};
 float fovy=90;
+float deg;
 void displayFunction() {
     // Clear Current Buffer
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -45,7 +47,7 @@ void displayFunction() {
 
     //lower corner and height,width of view port.
     glViewport(0,0,1100,700);
-
+    glRotatef(deg,0,0,1);
     // Draw Main Axis for better understanding
     drawFloor();
     drawSideWalls();
@@ -69,6 +71,7 @@ void keyBoardFunction(unsigned char key,int x,int y) {
     }
 }
 void idleFunction() {
+    deg++;
     glutPostRedisplay();
 }
 void initialize(){}
@@ -99,11 +102,11 @@ int main(int argc,char **argv) {
 
     // Enable Necessary Capabilities.
     glEnable(GL_DEPTH_TEST );
-    //glEnable(GL_LIGHTING);
+    glEnable(GL_LIGHTING);
     glEnable(GL_NORMALIZE);
     // Specify Keyboard function.
     glutKeyboardFunc(keyBoardFunction);
-
+    light0();
     // Specify display function.
     glutDisplayFunc(displayFunction);
 

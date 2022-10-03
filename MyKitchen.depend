@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1664798584 source:d:\computer graphics\mykitchen\main.cpp
+1664801124 source:d:\computer graphics\mykitchen\main.cpp
 	<GL/gl.h>
 	<GL/glu.h>
 	<GL/glut.h>
@@ -9,6 +9,7 @@
 	"primitives.h"
 	"linearMotion.h"
 	"Room.h"
+	"light.h"
 
 1526093414 c:\program files\codeblocks\mingw\x86_64-w64-mingw32\include\gl\gl.h
 	<windows.h>
@@ -880,7 +881,7 @@
 	<GL/glu.h>
 	<stdlib.h>
 
-1664798605 d:\computer graphics\mykitchen\primitives.h
+1664801311 d:\computer graphics\mykitchen\primitives.h
 
 1664771364 d:\computer graphics\mykitchen\room.h
 
@@ -912,4 +913,6 @@
 1664775009 d:\computer graphics\mykitchen\geometry.h
 
 1664771280 d:\computer graphics\mykitchen\fan.h
+
+1664801420 d:\computer graphics\mykitchen\light.h
 
