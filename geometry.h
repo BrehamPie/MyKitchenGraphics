@@ -44,6 +44,7 @@ void makeUnit(float a[]) {
 
 
 void multiplyMatrix(GLfloat M[][4], GLfloat P[4][1], GLfloat res[4][1]) {
+    for(int i=0;i<4;i++)res[i][0]=0;
     for (int i = 0;i < 4;i++) {
         for (int j = 0;j < 1;j++) {
             for (int k = 0;k < 4;k++) {

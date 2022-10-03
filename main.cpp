@@ -24,6 +24,9 @@ float fovy=90;
 float deg;
 float alpha,bita,theta;
 void displayFunction() {
+    GLfloat U[3],V[3],N[3];
+    getUVN(eye,look,up,U,V,N);
+    for(int i=0;i<3;i++)up[i] = V[i];
     // Clear Current Buffer
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -71,6 +74,16 @@ void keyBoardFunction(unsigned char key,int x,int y) {
         break;
     case '4':
         Yaw(eye,look,up,bita);
+        break;
+    case '6':
+        Yaw(eye,look,up,bita,false);
+        break;
+    case '8':
+        Pitch(eye,look,up,theta);
+        break;
+    case '2':
+        Pitch(eye,look,up,theta,false);
+        break;
     }
 }
 void idleFunction() {
