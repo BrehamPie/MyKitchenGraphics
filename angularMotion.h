@@ -2,17 +2,17 @@ void show(float a[]) {
     printf("%.3f %.3f %.3f\n",a[0],a[1],a[2]);
     return;
 }
-void showMat(float a[4][4]){
-    for(int i=0;i<4;i++){
-        for(int j=0;j<4;j++){
+void showMat(float a[4][4]) {
+    for(int i=0; i<4; i++) {
+        for(int j=0; j<4; j++) {
             printf("%.3f ",a[i][j]);
         }
         puts("");
     }
 }
-void showP(float a[4][1]){
-     for(int i=0;i<4;i++){
-        for(int j=0;j<1;j++){
+void showP(float a[4][1]) {
+    for(int i=0; i<4; i++) {
+        for(int j=0; j<1; j++) {
             printf("%.3f ",a[i][j]);
         }
         puts("");
@@ -95,14 +95,14 @@ void Yaw(GLfloat eye[], GLfloat look[], GLfloat up[],GLfloat &theta,bool clockwi
     else theta--;
     int neg = 1;
     if(clockwise==false)neg=-1;
-    GLfloat new_eye[3]={look[0],look[1],look[2]};
+    GLfloat new_eye[3]= {look[0],look[1],look[2]};
     transformToVCS(eye,look,up,new_eye);
     GLfloat new_x = new_eye[0]*cos(PI/180.0)+neg*new_eye[2]*sin(PI/180.0);
     GLfloat new_z = -neg*new_eye[0]*sin(PI/180.0)+new_eye[2]*cos(PI/180.0);
     new_eye[0] = new_x;
     new_eye[2] = new_z;
     transformToWCS(eye,look,up,new_eye);
-    for(int i=0;i<3;i++)look[i] = new_eye[i];
+    for(int i=0; i<3; i++)look[i] = new_eye[i];
 }
 
 void Pitch(GLfloat eye[], GLfloat look[], GLfloat up[],GLfloat &theta,bool clockwise = true) {
@@ -112,12 +112,33 @@ void Pitch(GLfloat eye[], GLfloat look[], GLfloat up[],GLfloat &theta,bool clock
     else theta--;
     int neg = 1;
     if(clockwise==false)neg=-1;
-    GLfloat new_eye[3]={look[0],look[1],look[2]};
+    GLfloat new_eye[3]= {look[0],look[1],look[2]};
     transformToVCS(eye,look,up,new_eye);
     GLfloat new_y =      new_eye[1]*cos(PI/180.0)- neg* new_eye[2]*sin(PI/180.0);
     GLfloat new_z = neg* new_eye[1]*sin(PI/180.0)+      new_eye[2]*cos(PI/180.0);
     new_eye[1] = new_y;
     new_eye[2] = new_z;
     transformToWCS(eye,look,up,new_eye);
-    for(int i=0;i<3;i++)look[i] = new_eye[i];
+    for(int i=0; i<3; i++)look[i] = new_eye[i];
+}
+
+void Roll(GLfloat eye[], GLfloat look[], GLfloat up[],GLfloat &theta,bool clockwise = true) {
+    if(clockwise)theta++;
+    else theta--;
+    int neg = 1;
+    if(clockwise==false)neg=-1;
+    GLfloat U[3],V[3],N[3];
+    for(int i=0; i<3; i++) N[i] = eye[i] - look[i];
+    crossProduct(up,N,U);
+    crossProduct(N,U,V);
+    GLfloat new_eye[3]= {V[0],V[1],V[2]};
+    transformToVCS(eye,look,up,new_eye);
+    GLfloat new_x =      new_eye[0]*cos(PI/180.0)- neg* new_eye[1]*sin(PI/180.0);
+    GLfloat new_y = neg* new_eye[0]*sin(PI/180.0)+      new_eye[1]*cos(PI/180.0);
+    new_eye[0] = new_x;
+    new_eye[1] = new_y;
+    transformToWCS(eye,look,up,new_eye);
+    makeUnit(new_eye);
+    for(int i=0; i<3; i++)up[i] = new_eye[i];
+    printf("New Up: %.3f %.3f %.3f\n",up[0],up[1],up[2]);
 }
