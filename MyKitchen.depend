@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1665300924 source:d:\computer graphics\mykitchen\main.cpp
+1665322381 source:d:\computer graphics\mykitchen\main.cpp
 	<GL/gl.h>
 	<GL/glu.h>
 	<GL/glut.h>
@@ -13,6 +13,11 @@
 	"Refrigerator.h"
 	"Oven.h"
 	"Cabinet.h"
+	"Window.h"
+	"Stove.h"
+	"Dining.h"
+	"Shelf.h"
+	"fan.h"
 	"light.h"
 
 1526093414 c:\program files\codeblocks\mingw\x86_64-w64-mingw32\include\gl\gl.h
@@ -885,9 +890,9 @@
 	<GL/glu.h>
 	<stdlib.h>
 
-1664801311 d:\computer graphics\mykitchen\primitives.h
+1665321834 d:\computer graphics\mykitchen\primitives.h
 
-1664771364 d:\computer graphics\mykitchen\room.h
+1665322484 d:\computer graphics\mykitchen\room.h
 
 1526093414 c:\program files\codeblocks\mingw\x86_64-w64-mingw32\include\stdio.h
 	<crtdefs.h>
@@ -916,7 +921,7 @@
 
 1664813306 d:\computer graphics\mykitchen\geometry.h
 
-1664771280 d:\computer graphics\mykitchen\fan.h
+1665322417 d:\computer graphics\mykitchen\fan.h
 
 1664808557 d:\computer graphics\mykitchen\light.h
 
@@ -927,4 +932,12 @@
 1665300745 d:\computer graphics\mykitchen\oven.h
 
 1665301183 d:\computer graphics\mykitchen\cabinet.h
+
+1665320040 d:\computer graphics\mykitchen\window.h
+
+1665302144 d:\computer graphics\mykitchen\stove.h
+
+1665302604 d:\computer graphics\mykitchen\dining.h
+
+1665302953 d:\computer graphics\mykitchen\shelf.h
 

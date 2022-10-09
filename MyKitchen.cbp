@@ -42,7 +42,14 @@
 			<Add library="gdi32" />
 			<Add directory="C:/Program Files/CodeBlocks/MinGW/x86_64-w64-mingw32/lib" />
 		</Linker>
+		<Unit filename="Cabinet.h" />
+		<Unit filename="Dining.h" />
+		<Unit filename="Oven.h" />
+		<Unit filename="Refrigerator.h" />
 		<Unit filename="Room.h" />
+		<Unit filename="Shelf.h" />
+		<Unit filename="Stove.h" />
+		<Unit filename="Window.h" />
 		<Unit filename="angularMotion.h" />
 		<Unit filename="fan.h" />
 		<Unit filename="geometry.h" />

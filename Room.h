@@ -13,9 +13,28 @@ void drawSideWalls() {
     GLfloat color[]= {.8,.86,.86};
     drawCube(color);
     glPopMatrix();
+    // Making Space for exhaust fan.
+    // lower part
+    glPushMatrix();
+    glScalef(50,33,5);
+    drawCube(color);
+    glPopMatrix();
+
+    //upper part
+    glPushMatrix();
+    glTranslatef(0,43,0);
+    glScalef(50,7,5);
+    drawCube(color);
+    glPopMatrix();
 
     glPushMatrix();
-    glScalef(50,50,5);
+    glScalef(30,50,5);
+    drawCube(color);
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslatef(40,0,0);
+    glScalef(10,50,5);
     drawCube(color);
     glPopMatrix();
 

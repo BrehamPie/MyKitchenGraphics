@@ -15,6 +15,7 @@
 #include "Stove.h"
 #include "Dining.h"
 #include "Shelf.h"
+#include "fan.h"
 #include "light.h"
 using namespace std;
 const float eps = 1e-6;
@@ -70,6 +71,7 @@ void displayFunction() {
     drawStove();
     drawDining();
     drawShelves();
+    drawFan();
     // execute all issued command quickly.
     glFlush();
 
@@ -81,6 +83,9 @@ void displayFunction() {
 
 void keyBoardFunction(unsigned char key,int x,int y) {
     switch(key) {
+    case 'g':
+        moveForward(look,eye);
+        break;
     case '+':
         zoomIn(fovy);
         break;

@@ -53,5 +53,5 @@ void drawBigWindow(){
 
 void drawWindows(){
     drawBigWindow();
-    drawSideWindow();
+    //drawSideWindow();
 }
