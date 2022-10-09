@@ -8,6 +8,7 @@
 #include "linearMotion.h"
 #include "angularMotion.h"
 #include "Room.h"
+#include "Refrigerator.h"
 #include "light.h"
 using namespace std;
 const float eps = 1e-6;
@@ -51,10 +52,12 @@ void displayFunction() {
 
     //lower corner and height,width of view port.
     glViewport(0,0,1100,700);
+    drawMainAxis();
     //glRotatef(deg,0,0,1);
     // Draw Main Axis for better understanding
     drawFloor();
     drawSideWalls();
+    drawRefrigerator();
     // execute all issued command quickly.
     glFlush();
 
