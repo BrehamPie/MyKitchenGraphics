@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1665300469 source:d:\computer graphics\mykitchen\main.cpp
+1665300924 source:d:\computer graphics\mykitchen\main.cpp
 	<GL/gl.h>
 	<GL/glu.h>
 	<GL/glut.h>
@@ -12,6 +12,7 @@
 	"Room.h"
 	"Refrigerator.h"
 	"Oven.h"
+	"Cabinet.h"
 	"light.h"
 
 1526093414 c:\program files\codeblocks\mingw\x86_64-w64-mingw32\include\gl\gl.h
@@ -923,5 +924,7 @@
 
 1665299904 d:\computer graphics\mykitchen\refrigerator.h
 
-1665300602 d:\computer graphics\mykitchen\oven.h
+1665300745 d:\computer graphics\mykitchen\oven.h
+
+1665301183 d:\computer graphics\mykitchen\cabinet.h
 

@@ -26,7 +26,6 @@ void drawOvenBox() {
     glPopMatrix();
 }
 void drawOvens() {
-
     drawOvenBox();
     GLfloat color[]={.81,.47,.76};
     GLfloat color2[]={.2,.1,.19};

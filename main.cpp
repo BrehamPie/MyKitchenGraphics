@@ -10,6 +10,8 @@
 #include "Room.h"
 #include "Refrigerator.h"
 #include "Oven.h"
+#include "Cabinet.h"
+#include "Window.h"
 #include "light.h"
 using namespace std;
 const float eps = 1e-6;
@@ -60,6 +62,8 @@ void displayFunction() {
     drawSideWalls();
     drawRefrigerator();
     drawOvens();
+    drawCabinets();
+    drawWindows();
     // execute all issued command quickly.
     glFlush();
 
