@@ -85,7 +85,6 @@ void drawCube(GLfloat color[]) {
         {7, 3, 0, 4},
         {1, 2, 6, 5,}
     };
-    int comb[]= {0,1,2,0,1,0};
     for(int i=0; i<6; i++) {
         drawQuad(vertex[index[i][0]],
                  vertex[index[i][1]],

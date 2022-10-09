@@ -33,8 +33,8 @@ void drawSideWalls() {
     glPopMatrix();
 
     glPushMatrix();
-    glTranslatef(40,0,0);
-    glScalef(10,50,5);
+    glTranslatef(37,0,0);
+    glScalef(13,50,5);
     drawCube(color);
     glPopMatrix();
 
@@ -43,4 +43,23 @@ void drawSideWalls() {
     glScalef(50,50,5);
     drawCube(color);
     glPopMatrix();
+
+    glPushMatrix();
+    GLfloat no_mat[] = { 0.0, 0.0, 0.0, 1.0 };
+    GLfloat mat_ambient[] = { 1,0,0, 1.0 };
+    GLfloat mat_diffuse[] = {1, 0,0, 1.0 };
+    GLfloat mat_specular[] = { 1,1,0, 1.0 };
+    GLfloat mat_shininess[] = {60};
+
+    glMaterialfv( GL_FRONT, GL_AMBIENT, mat_ambient);
+    glMaterialfv( GL_FRONT, GL_DIFFUSE, mat_diffuse);
+    glMaterialfv( GL_FRONT, GL_SPECULAR, mat_specular);
+    glMaterialfv( GL_FRONT, GL_SHININESS, mat_shininess);
+    glMaterialfv(GL_FRONT,GL_EMISSION,mat_diffuse);
+    glTranslatef(20,45,80);
+    glutSolidSphere(1,100,100);
+    glMaterialfv(GL_FRONT,GL_EMISSION,no_mat);
+
+    glPopMatrix();
+
 }

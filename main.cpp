@@ -15,6 +15,9 @@
 #include "Stove.h"
 #include "Dining.h"
 #include "Shelf.h"
+
+float deg,fan_deg;
+
 #include "fan.h"
 #include "light.h"
 using namespace std;
@@ -29,7 +32,7 @@ GLfloat look[3]={0,20,40};
 //
 GLfloat up[3]={0,1,0};
 float fovy=90;
-float deg;
+
 float alpha,bita,theta;
 void displayFunction() {
     GLfloat U[3],V[3],N[3];
@@ -71,7 +74,11 @@ void displayFunction() {
     drawStove();
     drawDining();
     drawShelves();
+    glPushMatrix();
+   // glRotatef(fan_deg,0,0,1);
     drawFan();
+    glPopMatrix();
+
     // execute all issued command quickly.
     glFlush();
 
@@ -80,7 +87,7 @@ void displayFunction() {
 
 
 }
-
+bool rotate_fan;
 void keyBoardFunction(unsigned char key,int x,int y) {
     switch(key) {
     case 'g':
@@ -110,10 +117,15 @@ void keyBoardFunction(unsigned char key,int x,int y) {
     case '9':
         Roll(eye,look,up,alpha,false);
         break;
+    case 'f':
+        rotate_fan = !rotate_fan;
     }
 }
 void idleFunction() {
-    deg++;
+    if(rotate_fan==true){
+        fan_deg = fmod(fan_deg+1,360);
+    }
+    light0();
     glutPostRedisplay();
 }
 void initialize(){}
@@ -149,6 +161,7 @@ int main(int argc,char **argv) {
     // Specify Keyboard function.
     glutKeyboardFunc(keyBoardFunction);
     light0();
+    //light1();
     // Specify display function.
     glutDisplayFunc(displayFunction);
 

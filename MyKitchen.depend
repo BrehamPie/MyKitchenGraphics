@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1665322381 source:d:\computer graphics\mykitchen\main.cpp
+1665327493 source:d:\computer graphics\mykitchen\main.cpp
 	<GL/gl.h>
 	<GL/glu.h>
 	<GL/glut.h>
@@ -890,9 +890,9 @@
 	<GL/glu.h>
 	<stdlib.h>
 
-1665321834 d:\computer graphics\mykitchen\primitives.h
+1665327590 d:\computer graphics\mykitchen\primitives.h
 
-1665322484 d:\computer graphics\mykitchen\room.h
+1665325650 d:\computer graphics\mykitchen\room.h
 
 1526093414 c:\program files\codeblocks\mingw\x86_64-w64-mingw32\include\stdio.h
 	<crtdefs.h>
@@ -921,9 +921,9 @@
 
 1664813306 d:\computer graphics\mykitchen\geometry.h
 
-1665322417 d:\computer graphics\mykitchen\fan.h
+1665327255 d:\computer graphics\mykitchen\fan.h
 
-1664808557 d:\computer graphics\mykitchen\light.h
+1665327732 d:\computer graphics\mykitchen\light.h
 
 1664846152 d:\computer graphics\mykitchen\angularmotion.h
 
