@@ -9,6 +9,7 @@
 #include "angularMotion.h"
 #include "Room.h"
 #include "Refrigerator.h"
+#include "Oven.h"
 #include "light.h"
 using namespace std;
 const float eps = 1e-6;
@@ -58,6 +59,7 @@ void displayFunction() {
     drawFloor();
     drawSideWalls();
     drawRefrigerator();
+    drawOvens();
     // execute all issued command quickly.
     glFlush();
 

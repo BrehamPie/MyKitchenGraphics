@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1665298081 source:d:\computer graphics\mykitchen\main.cpp
+1665300469 source:d:\computer graphics\mykitchen\main.cpp
 	<GL/gl.h>
 	<GL/glu.h>
 	<GL/glut.h>
@@ -11,6 +11,7 @@
 	"angularMotion.h"
 	"Room.h"
 	"Refrigerator.h"
+	"Oven.h"
 	"light.h"
 
 1526093414 c:\program files\codeblocks\mingw\x86_64-w64-mingw32\include\gl\gl.h
@@ -921,4 +922,6 @@
 1664846152 d:\computer graphics\mykitchen\angularmotion.h
 
 1665299904 d:\computer graphics\mykitchen\refrigerator.h
+
+1665300602 d:\computer graphics\mykitchen\oven.h
 
