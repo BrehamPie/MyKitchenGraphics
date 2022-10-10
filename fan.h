@@ -16,6 +16,7 @@ void drawFan() {
     glutWireSphere(6,7,7);
     glPopMatrix();*/
     glPushMatrix();
+
     glRotatef(fan_deg,0,0,1);
     glPushMatrix();
     //glColor3f(.16,.5,.34);

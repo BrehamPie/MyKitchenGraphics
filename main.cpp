@@ -75,10 +75,25 @@ void displayFunction() {
     drawDining();
     drawShelves();
     glPushMatrix();
-   // glRotatef(fan_deg,0,0,1);
     drawFan();
+    glTranslatef(25,7,45);
+    GLfloat shine[]={127};
+    glMaterialfv(GL_FRONT,GL_SHININESS,shine);
+    glutSolidSphere(2.5,100,100);
     glPopMatrix();
 
+    GLfloat light_ambient[]  = {.1, .1, .1, 1.0};
+    GLfloat light_diffuse[]  = { 0.5, 1.0,0.3, 1.0 };
+    GLfloat light_specular[] = { 0.5, 1.0, 0.3, 1.0 };
+    GLfloat light_position[] = { 25.0, 50.0, 45.0, 1.0 };
+    glPushMatrix();
+    glTranslatef(20,50,40);
+    glMaterialfv( GL_FRONT, GL_AMBIENT, light_ambient);
+    glMaterialfv( GL_FRONT, GL_DIFFUSE, light_diffuse);
+    glMaterialfv( GL_FRONT, GL_SPECULAR, light_specular);
+    //glMaterialfv( GL_FRONT, GL_SHININESS, mat_shininess);
+    glutSolidSphere(1,100,100);
+    glPopMatrix();
     // execute all issued command quickly.
     glFlush();
 
@@ -123,9 +138,11 @@ void keyBoardFunction(unsigned char key,int x,int y) {
 }
 void idleFunction() {
     if(rotate_fan==true){
-        fan_deg = fmod(fan_deg+1,360);
+        fan_deg = fmod(fan_deg+100,360);
     }
     light0();
+    //light1();
+    light2();
     glutPostRedisplay();
 }
 void initialize(){}
@@ -158,9 +175,10 @@ int main(int argc,char **argv) {
     glEnable(GL_DEPTH_TEST );
     glEnable(GL_LIGHTING);
     glEnable(GL_NORMALIZE);
+
     // Specify Keyboard function.
     glutKeyboardFunc(keyBoardFunction);
-    light0();
+    //light0();
     //light1();
     // Specify display function.
     glutDisplayFunc(displayFunction);

@@ -1,6 +1,7 @@
 
 void drawTable(){
-    GLfloat color[] = {.09,.02,.03};
+     GLfloat color[] = {.77,.08,.19};
+   // GLfloat color[] = {.16,.22,.13};
     // Positioning of Table.
     glTranslatef(5,0,30);
 
@@ -60,8 +61,53 @@ void drawChairs(){
     drawChair(4,22,true);
     drawChair(11,22,true);
 }
+void drawLamp(){
+    GLfloat col[] = {.3,.6,.4};
+    GLfloat no_mat[] = { 1.0, 1.0, 1.0, 1.0 };
+    GLfloat mat_ambient[] = { .6,.7,.3, 1.0 };
+    GLfloat mat_diffuse[] = {.1, .8,.6, 1.0 };
+    GLfloat mat_specular[] = { .1,.31,.9, 1.0 };
+    GLfloat mat_shininess[] = {60};
 
+    glMaterialfv( GL_FRONT, GL_AMBIENT, mat_ambient);
+    glMaterialfv( GL_FRONT, GL_DIFFUSE, mat_diffuse);
+    glMaterialfv( GL_FRONT, GL_SPECULAR, mat_specular);
+    glMaterialfv( GL_FRONT, GL_SHININESS, mat_shininess);
+    //glMaterialfv(GL_FRONT,GL_EMISSION,mat_diffuse);
+
+    glPushMatrix();
+    glTranslatef(35,20,55);
+    glRotatef(-90,1,0,0);
+    glutSolidCone(1,1,100,100);
+
+    glPushMatrix();
+    glRotatef(-90,1,0,0);
+    glScalef(.21,5,.21);
+    drawCube(col);
+    glPopMatrix();
+
+    glPopMatrix();
+}
+void drawTeapot(){
+GLfloat col[] = {.3,.6,.4};
+    GLfloat no_mat[] = { 1.0, 1.0, 1.0, 1.0 };
+    GLfloat mat_ambient[] = { .6,.7,.3, 1.0 };
+    GLfloat mat_diffuse[] = {.1, .8,.6, 1.0 };
+    GLfloat mat_specular[] = { .1,.31,.9, 1.0 };
+    GLfloat mat_shininess[] = {60};
+
+    glMaterialfv( GL_FRONT, GL_AMBIENT, mat_ambient);
+    glMaterialfv( GL_FRONT, GL_DIFFUSE, mat_diffuse);
+    glMaterialfv( GL_FRONT, GL_SPECULAR, mat_specular);
+    glMaterialfv( GL_FRONT, GL_SHININESS, mat_shininess);
+    glPushMatrix();
+    glTranslatef(35,18.3,55);
+    glutSolidTeapot(1);
+    glPopMatrix();
+}
 void drawDining(){
     drawTable();
     drawChairs();
+    //drawLamp();
+    drawTeapot();
 }
