@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1665367458 source:d:\computer graphics\mykitchen\main.cpp
+1665398519 source:d:\computer graphics\mykitchen\main.cpp
 	<GL/gl.h>
 	<GL/glu.h>
 	<GL/glut.h>
@@ -19,6 +19,7 @@
 	"Shelf.h"
 	"fan.h"
 	"light.h"
+	"misc.h"
 
 1526093414 c:\program files\codeblocks\mingw\x86_64-w64-mingw32\include\gl\gl.h
 	<windows.h>
@@ -923,7 +924,7 @@
 
 1665367104 d:\computer graphics\mykitchen\fan.h
 
-1665367615 d:\computer graphics\mykitchen\light.h
+1665398546 d:\computer graphics\mykitchen\light.h
 
 1664846152 d:\computer graphics\mykitchen\angularmotion.h
 
@@ -940,4 +941,6 @@
 1665366519 d:\computer graphics\mykitchen\dining.h
 
 1665302953 d:\computer graphics\mykitchen\shelf.h
+
+1665398319 d:\computer graphics\mykitchen\misc.h
 

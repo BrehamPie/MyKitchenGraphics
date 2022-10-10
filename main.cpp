@@ -19,25 +19,40 @@
 float deg,fan_deg;
 
 #include "fan.h"
-#include "light.h"
 using namespace std;
 const float eps = 1e-6;
 /*------Global Variables------*/
 //Eye Positions
-GLfloat eye[3]={100,20,40};
+GLfloat eye[3]= {100,20,40};
 
 //Look At Positions
-GLfloat look[3]={0,20,40};
+GLfloat look[3]= {0,20,40};
 
-//
-GLfloat up[3]={0,1,0};
+//view up vector
+GLfloat up[3]= {0,1,0};
 float fovy=90;
-
 float alpha,bita,theta;
+
+//Misc
+int currentLight,numberOfLights;
+bool turnOn[3],ambientOn[3],diffuseOn[3],specularOn[3];
+// Lights
+GLfloat noLight[] = {0,0,0,1};
+//Light0
+GLfloat light0_ambient[][4]  = {{0,0,0,1},{.1, .1, .1, 1.0}};
+GLfloat light0_diffuse[2][4]  = {{0,0,0,1},{ 1, 1,0.7, 1.0 }};
+GLfloat light0_specular[2][4] = {{0,0,0,1},{ 0.5, 1, 0.3, 1.0 }};
+GLfloat light0_position[] = { 25.0, 50.0, 45.0, 1.0 };
+
+GLfloat light1_ambient[][4]  = {{0,0,0,1},{1, 0, 0, 1.0}};
+GLfloat light1_diffuse[][4]  = {{0,0,0,1},{0, 1, 0, 1.0}};
+GLfloat light1_specular[][4] = {{0,0,0,1},{0, 0, 1, 1.0}};
+GLfloat light1_position[] = { 47.5,45.0, 67.50, 1.0 };
+#include "light.h"
 void displayFunction() {
     GLfloat U[3],V[3],N[3];
-   // getUVN(eye,look,up,U,V,N);
-   // for(int i=0;i<3;i++)up[i] = V[i];
+    // getUVN(eye,look,up,U,V,N);
+    // for(int i=0;i<3;i++)up[i] = V[i];
     // Clear Current Buffer
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -48,7 +63,7 @@ void displayFunction() {
     glLoadIdentity();
 
     // Choose frustum - Further the near plane bigger the object.
-   // glFrustum(-6,6,-6,6,nearP,farP);//left right bottom top
+    // glFrustum(-6,6,-6,6,nearP,farP);//left right bottom top
 
     gluPerspective(fovy,1,5,500);
     // Select Matrix for Operation
@@ -77,7 +92,7 @@ void displayFunction() {
     glPushMatrix();
     drawFan();
     glTranslatef(25,7,45);
-    GLfloat shine[]={127};
+    GLfloat shine[]= {127};
     glMaterialfv(GL_FRONT,GL_SHININESS,shine);
     glutSolidSphere(2.5,100,100);
     glPopMatrix();
@@ -91,7 +106,7 @@ void displayFunction() {
     glMaterialfv( GL_FRONT, GL_AMBIENT, light_ambient);
     glMaterialfv( GL_FRONT, GL_DIFFUSE, light_diffuse);
     glMaterialfv( GL_FRONT, GL_SPECULAR, light_specular);
-    //glMaterialfv( GL_FRONT, GL_SHININESS, mat_shininess);
+//    glMaterialfv( GL_FRONT, GL_SHININESS, mat_shininess);
     glutSolidSphere(1,100,100);
     glPopMatrix();
     // execute all issued command quickly.
@@ -103,49 +118,15 @@ void displayFunction() {
 
 }
 bool rotate_fan;
-void keyBoardFunction(unsigned char key,int x,int y) {
-    switch(key) {
-    case 'g':
-        moveForward(look,eye);
-        break;
-    case '+':
-        zoomIn(fovy);
-        break;
-    case '-':
-        zoomOut(fovy);
-        break;
-    case '4':
-        Yaw(eye,look,up,bita);
-        break;
-    case '6':
-        Yaw(eye,look,up,bita,false);
-        break;
-    case '8':
-        Pitch(eye,look,up,theta);
-        break;
-    case '2':
-        Pitch(eye,look,up,theta,false);
-        break;
-    case '7':
-        Roll(eye,look,up,alpha);
-        break;
-    case '9':
-        Roll(eye,look,up,alpha,false);
-        break;
-    case 'f':
-        rotate_fan = !rotate_fan;
-    }
-}
+#include "misc.h"
 void idleFunction() {
-    if(rotate_fan==true){
-        fan_deg = fmod(fan_deg+100,360);
+    if(rotate_fan==true) {
+        fan_deg = fmod(fan_deg+16,360);
     }
     light0();
-    //light1();
-    light2();
+    light1();
     glutPostRedisplay();
 }
-void initialize(){}
 
 int main(int argc,char **argv) {
 
