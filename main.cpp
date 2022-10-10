@@ -3,6 +3,10 @@
 #include<GL/glut.h>
 #include<windows.h>
 #include<bits/stdc++.h>
+
+float deg,fan_deg,ball_deg,ball_move,ball_forward;
+
+
 #include "geometry.h"
 #include "primitives.h"
 #include "linearMotion.h"
@@ -15,9 +19,6 @@
 #include "Stove.h"
 #include "Dining.h"
 #include "Shelf.h"
-
-float deg,fan_deg;
-
 #include "fan.h"
 using namespace std;
 const float eps = 1e-6;
@@ -38,21 +39,19 @@ int currentLight,numberOfLights;
 bool turnOn[3],ambientOn[3],diffuseOn[3],specularOn[3];
 // Lights
 GLfloat noLight[] = {0,0,0,1};
+GLfloat white_light[] = {1,1,1,1};
 //Light0
 GLfloat light0_ambient[][4]  = {{0,0,0,1},{.1, .1, .1, 1.0}};
 GLfloat light0_diffuse[2][4]  = {{0,0,0,1},{ 1, 1,0.7, 1.0 }};
 GLfloat light0_specular[2][4] = {{0,0,0,1},{ 0.5, 1, 0.3, 1.0 }};
-GLfloat light0_position[] = { 25.0, 50.0, 45.0, 1.0 };
-
-GLfloat light1_ambient[][4]  = {{0,0,0,1},{1, 0, 0, 1.0}};
+GLfloat light0_position[] = { 25.0, 48.0, 45.0, 1.0 };
+//Light1
+GLfloat light1_ambient[][4]  = {{0,0,0,1},{.1, .1, .1, 1.0}};
 GLfloat light1_diffuse[][4]  = {{0,0,0,1},{0, 1, 0, 1.0}};
-GLfloat light1_specular[][4] = {{0,0,0,1},{0, 0, 1, 1.0}};
-GLfloat light1_position[] = { 47.5,45.0, 67.50, 1.0 };
+GLfloat light1_specular[][4] = {{0,0,0,1},{1, 0, 1, 1.0}};
+GLfloat light1_position[] = { 45.5,45.0, 57.50, 1.0 };
 #include "light.h"
 void displayFunction() {
-    GLfloat U[3],V[3],N[3];
-    // getUVN(eye,look,up,U,V,N);
-    // for(int i=0;i<3;i++)up[i] = V[i];
     // Clear Current Buffer
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -77,9 +76,11 @@ void displayFunction() {
 
     //lower corner and height,width of view port.
     glViewport(0,0,1100,700);
+
     drawMainAxis();
     //glRotatef(deg,0,0,1);
     // Draw Main Axis for better understanding
+    physicalLight();
     drawFloor();
     drawSideWalls();
     drawRefrigerator();
@@ -89,26 +90,12 @@ void displayFunction() {
     drawStove();
     drawDining();
     drawShelves();
-    glPushMatrix();
     drawFan();
-    glTranslatef(25,7,45);
-    GLfloat shine[]= {127};
-    glMaterialfv(GL_FRONT,GL_SHININESS,shine);
-    glutSolidSphere(2.5,100,100);
-    glPopMatrix();
+    snowMan();
 
-    GLfloat light_ambient[]  = {.1, .1, .1, 1.0};
-    GLfloat light_diffuse[]  = { 0.5, 1.0,0.3, 1.0 };
-    GLfloat light_specular[] = { 0.5, 1.0, 0.3, 1.0 };
-    GLfloat light_position[] = { 25.0, 50.0, 45.0, 1.0 };
-    glPushMatrix();
-    glTranslatef(20,50,40);
-    glMaterialfv( GL_FRONT, GL_AMBIENT, light_ambient);
-    glMaterialfv( GL_FRONT, GL_DIFFUSE, light_diffuse);
-    glMaterialfv( GL_FRONT, GL_SPECULAR, light_specular);
-//    glMaterialfv( GL_FRONT, GL_SHININESS, mat_shininess);
-    glutSolidSphere(1,100,100);
-    glPopMatrix();
+
+
+
     // execute all issued command quickly.
     glFlush();
 
@@ -122,6 +109,17 @@ bool rotate_fan;
 void idleFunction() {
     if(rotate_fan==true) {
         fan_deg = fmod(fan_deg+16,360);
+        ball_deg = fmod(ball_deg+2,360);
+        if(ball_forward)ball_move+=.1;
+        else ball_move-=.1;
+        if(ball_move>10 && ball_forward){
+            ball_move-=.1;
+            ball_forward = 0;
+        }
+        if(ball_move<0 && ball_forward==0){
+            ball_move+=.1;
+            ball_forward = 1;
+        }
     }
     light0();
     light1();
@@ -159,8 +157,6 @@ int main(int argc,char **argv) {
 
     // Specify Keyboard function.
     glutKeyboardFunc(keyBoardFunction);
-    //light0();
-    //light1();
     // Specify display function.
     glutDisplayFunc(displayFunction);
 

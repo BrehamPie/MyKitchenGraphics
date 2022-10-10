@@ -13,6 +13,7 @@ void drawSideWalls() {
     GLfloat color[]= {.8,.86,.86};
     drawCube(color);
     glPopMatrix();
+
     // Making Space for exhaust fan.
     // lower part
     glPushMatrix();
@@ -43,23 +44,37 @@ void drawSideWalls() {
     glScalef(50,50,5);
     drawCube(color);
     glPopMatrix();
+}
+void snowMan(){
+    GLfloat at_ambient[] = { .2,.2,.2, 1.0 };
+    GLfloat at_diffuse[] = { .6,.3,.4, 1.0 };
+    GLfloat at_specular[] = { .6,.3,.4, 1.0 };
+    GLfloat at_shininess[] = {60};
+    glMaterialfv( GL_FRONT, GL_AMBIENT, at_ambient);
+    glMaterialfv( GL_FRONT, GL_DIFFUSE, at_diffuse);
+    glMaterialfv( GL_FRONT, GL_SPECULAR, at_specular);
+    glMaterialfv( GL_FRONT, GL_SHININESS, at_shininess);
 
     glPushMatrix();
-    GLfloat no_mat[] = { 0.0, 0.0, 0.0, 1.0 };
-    GLfloat mat_ambient[] = { 1,0,0, 1.0 };
-    GLfloat mat_diffuse[] = {1, 0,0, 1.0 };
-    GLfloat mat_specular[] = { 1,1,0, 1.0 };
-    GLfloat mat_shininess[] = {60};
+    glTranslatef(23+ball_move,8,23);
+    glRotatef(ball_deg,0,1,0);
 
-    glMaterialfv( GL_FRONT, GL_AMBIENT, mat_ambient);
-    glMaterialfv( GL_FRONT, GL_DIFFUSE, mat_diffuse);
-    glMaterialfv( GL_FRONT, GL_SPECULAR, mat_specular);
-    glMaterialfv( GL_FRONT, GL_SHININESS, mat_shininess);
-    glMaterialfv(GL_FRONT,GL_EMISSION,mat_diffuse);
-    glTranslatef(20,45,80);
-    glutSolidSphere(1,100,100);
-    glMaterialfv(GL_FRONT,GL_EMISSION,no_mat);
-
+    glPushMatrix();
+    glutSolidSphere(3,30,30);
+    glTranslatef(0,2.8,0);
+    glutSolidSphere(1.5,100,100);
     glPopMatrix();
 
+    glPushMatrix();
+    glScalef(1,1,4);
+    drawCube(at_diffuse);
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslatef(0,0,-4);
+    glScalef(1,1,4);
+    drawCube(at_diffuse);
+    glPopMatrix();
+
+    glPopMatrix();
 }

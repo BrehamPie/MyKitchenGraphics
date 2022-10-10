@@ -1,12 +1,27 @@
+void show(){
+    system("cls");
+    cout<<"Light 0 States:\n";
+    cout<<"Switch: "<<(!turnOn[0]?"Off":"On")<<endl;
+    cout<<"Ambient: "<<(!ambientOn[0]?"Off":"On")<<endl;
+    cout<<"Diffuse: "<<(!diffuseOn[0]?"Off":"On")<<endl;
+    cout<<"Specular: "<<(!specularOn[0]?"Off":"On")<<endl;
+    puts("");
+    cout<<"Light 1 States:\n";
+    cout<<"Switch: "<<(!turnOn[1]?"Off":"On")<<endl;
+    cout<<"Ambient: "<<(!ambientOn[1]?"Off":"On")<<endl;
+    cout<<"Diffuse: "<<(!diffuseOn[1]?"Off":"On")<<endl;
+    cout<<"Specular: "<<(!specularOn[1]?"Off":"On")<<endl;
+}
 void initialize() {
     //turn on light0
-    for(int i=0; i<1; i++) {
+    for(int i=0; i<2; i++) {
         ambientOn[i]=1;
         specularOn[i]=1;
-        turnOn[i]=1;
+        turnOn[i]=0;
         diffuseOn[i]=1;
     }
     numberOfLights = 2;
+    currentLight = 0;
     eye[0]= 100;
     eye[1]= 20;
     eye[2]= 40;
@@ -23,6 +38,7 @@ void toggleLight() {
     cout<<"current :"<<currentLight<<endl;
 }
 void lightSwitch() {
+
     turnOn[currentLight] = !turnOn[currentLight];
 }
 void ambientSwitch() {
@@ -87,4 +103,5 @@ void keyBoardFunction(unsigned char key,int x,int y) {
     case '5':
         initialize();
     }
+     show();
 }
