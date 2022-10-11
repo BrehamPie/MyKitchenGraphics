@@ -33,9 +33,9 @@ void transformToVCS(GLfloat eye[], GLfloat look[], GLfloat up[], GLfloat P_[]) {
     P[3][0] = 1;
     GLfloat U[3],V[3],N[3];
     getUVN(eye,look,up,U,V,N);
-    show(U);
-    show(V);
-    show(N);
+   // show(U);
+    //show(V);
+   // show(N);
     GLfloat R[4][4];
     GLfloat T[4][4];
 
@@ -140,5 +140,5 @@ void Roll(GLfloat eye[], GLfloat look[], GLfloat up[],GLfloat &theta,bool clockw
     transformToWCS(eye,look,up,new_eye);
     makeUnit(new_eye);
     for(int i=0; i<3; i++)up[i] = new_eye[i];
-    printf("New Up: %.3f %.3f %.3f\n",up[0],up[1],up[2]);
+    //printf("New Up: %.3f %.3f %.3f\n",up[0],up[1],up[2]);
 }

@@ -1,5 +1,13 @@
 void show(){
     system("cls");
+    cout<<"Variables\t\t\t\t\t";
+    cout<<"Eye Position:"<<;
+    cout<<eye[0]<<' '<<eye[1]<<' '<<eye[2]<<endl<<endl;
+
+    cout<<"Look Position:"<<endl;
+    cout<<look[0]<<' '<<look[1]<<' '<<look[2]<<endl<<endl;
+    cout<<"Zoomed in: "<<90-fovy<<endl<<endl;
+    cout<<"Currently Selected Light: "<<currentLight<<endl<<endl;
     cout<<"Light 0 States:\n";
     cout<<"Switch: "<<(!turnOn[0]?"Off":"On")<<endl;
     cout<<"Ambient: "<<(!ambientOn[0]?"Off":"On")<<endl;
@@ -32,6 +40,7 @@ void initialize() {
     up[1]= 1;
     up[2]= 0;
     fovy=90;
+    show();
 }
 void toggleLight() {
     currentLight = (currentLight+1)%numberOfLights;
