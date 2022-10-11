@@ -51,7 +51,7 @@ void transformToVCS(GLfloat eye[], GLfloat look[], GLfloat up[], GLfloat P_[]) {
         }
         if(i<3)T[i][3]= -eye[i];
     }
-    GLfloat tmp[4][1],tmp2[4][1];
+    GLfloat tmp[4][1];
     multiplyMatrix(T,P,tmp);
     multiplyMatrix(R,tmp,P);
     for(int i=0; i<3; i++) {
@@ -63,7 +63,9 @@ void transformToWCS(GLfloat eye[], GLfloat look[],GLfloat up[],GLfloat P_[]) {
     GLfloat P[4][1];
     for(int i=0; i<3; i++)P[i][0] = P_[i];
     P[3][0] = 1;
+
     GLfloat U[3],V[3],N[3];
+
     getUVN(eye,look,up,U,V,N);
     GLfloat R[4][4];
     GLfloat T[4][4];
@@ -79,7 +81,7 @@ void transformToWCS(GLfloat eye[], GLfloat look[],GLfloat up[],GLfloat P_[]) {
     for (int i = 0; i < 3; i++)R[i][2] = N[i];
     R[0][3] = R[1][3] = R[2][3] = R[3][0] = R[3][1] = R[3][2] = 0;
     R[3][3] = 1;
-    GLfloat tmp[4][1],tmp2[4][1];
+    GLfloat tmp[4][1];
     multiplyMatrix(R, P, tmp);
     multiplyMatrix(T, tmp, P);
     for(int i=0; i<3; i++) {
@@ -141,4 +143,9 @@ void Roll(GLfloat eye[], GLfloat look[], GLfloat up[],GLfloat &theta,bool clockw
     makeUnit(new_eye);
     for(int i=0; i<3; i++)up[i] = new_eye[i];
     //printf("New Up: %.3f %.3f %.3f\n",up[0],up[1],up[2]);
+}
+
+void Rotate(bool positive = true){
+    if(positive)rotation_angle++;
+    else rotation_angle--;
 }

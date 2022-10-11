@@ -5,8 +5,16 @@
 #include<bits/stdc++.h>
 
 float deg,fan_deg,ball_deg,ball_move,ball_forward;
+float rotation_angle;
+//Eye Positions
+GLfloat eye[3]= {100,20,40};
 
+//Look At Positions
+GLfloat look[3]= {0,20,40};
 
+//view up vector
+GLfloat up[3]= {0,1,0};
+float fovy=90;
 #include "geometry.h"
 #include "primitives.h"
 #include "linearMotion.h"
@@ -23,15 +31,7 @@ float deg,fan_deg,ball_deg,ball_move,ball_forward;
 using namespace std;
 const float eps = 1e-6;
 /*------Global Variables------*/
-//Eye Positions
-GLfloat eye[3]= {100,20,40};
 
-//Look At Positions
-GLfloat look[3]= {0,20,40};
-
-//view up vector
-GLfloat up[3]= {0,1,0};
-float fovy=90;
 float alpha,bita,theta;
 
 //Misc
@@ -78,7 +78,7 @@ void displayFunction() {
     glViewport(0,0,1100,700);
 
     drawMainAxis();
-    //glRotatef(deg,0,0,1);
+    glRotatef(rotation_angle,0,1,0);
     // Draw Main Axis for better understanding
     physicalLight();
     drawFloor();

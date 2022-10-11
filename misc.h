@@ -1,7 +1,7 @@
-void show(){
+void show() {
     system("cls");
-    cout<<"Variables\t\t\t\t\t";
-    cout<<"Eye Position:"<<;
+    cout<<"Variables\t\t\t\t\t\n";
+    cout<<"Eye Position:"<<endl;
     cout<<eye[0]<<' '<<eye[1]<<' '<<eye[2]<<endl<<endl;
 
     cout<<"Look Position:"<<endl;
@@ -111,6 +111,31 @@ void keyBoardFunction(unsigned char key,int x,int y) {
         break;
     case '5':
         initialize();
+        break;
+    case 'R':
+        Rotate();
+        break;
+    case 'r':
+        Rotate(false);
+        break;
+    case 'i':
+        onward();
+        break;
+    case 'k':
+        backward();
+        break;
+    case 'j':
+        left();
+        break;
+    case 'l':
+        right();
+        break;
+    case 'u':
+        upward();
+        break;
+    case 'o':
+        downward();
+        break;
     }
-     show();
+    show();
 }

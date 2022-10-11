@@ -18,3 +18,22 @@ void zoomIn(GLfloat &fovy) {
 void zoomOut(GLfloat &fovy) {
     fovy = std::min(175.0,fovy+0.3);
 }
+
+void upward(){
+    eye[1]++;
+}
+void downward(){
+    eye[1]--;
+}
+void left(){
+    eye[2]++;
+}
+void right(){
+    eye[2]--;
+}
+void onward(){
+    eye[0]--;
+}
+void backward(){
+    eye[0]++;
+}

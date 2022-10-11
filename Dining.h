@@ -63,7 +63,6 @@ void drawChairs(){
 }
 void drawLamp(){
     GLfloat col[] = {.3,.6,.4};
-    GLfloat no_mat[] = { 1.0, 1.0, 1.0, 1.0 };
     GLfloat mat_ambient[] = { .6,.7,.3, 1.0 };
     GLfloat mat_diffuse[] = {.1, .8,.6, 1.0 };
     GLfloat mat_specular[] = { .1,.31,.9, 1.0 };
@@ -89,8 +88,6 @@ void drawLamp(){
     glPopMatrix();
 }
 void drawTeapot(){
-GLfloat col[] = {.3,.6,.4};
-    GLfloat no_mat[] = { 1.0, 1.0, 1.0, 1.0 };
     GLfloat mat_ambient[] = { .6,.7,.3, 1.0 };
     GLfloat mat_diffuse[] = {.1, .8,.6, 1.0 };
     GLfloat mat_specular[] = { .1,.31,.9, 1.0 };

@@ -12,8 +12,7 @@ void drawLine(GLfloat A[],GLfloat B[],const GLfloat Color[]) {
 // Draw a Single Quad
 void drawQuad(GLfloat A[],GLfloat B[],GLfloat C[],GLfloat D[],GLfloat color[]) {
     glPushMatrix();
-    GLfloat no_mat[] = { 0.0, 1.0, 0.0, 1.0 };
-    GLfloat mat_ambient[] = { color[0], color[1],color[2], 1.0 };
+    GLfloat mat_ambient[] = { color[0]/2, color[1]/3,color[2]/3, 1.0 };
     GLfloat mat_diffuse[] = { color[0], color[1],color[2], 1.0 };
     GLfloat mat_specular[] = { color[0], color[1],color[2], 1.0 };
     GLfloat mat_shininess[] = {60};
@@ -23,7 +22,6 @@ void drawQuad(GLfloat A[],GLfloat B[],GLfloat C[],GLfloat D[],GLfloat color[]) {
     glMaterialfv( GL_FRONT, GL_SPECULAR, mat_specular);
     glMaterialfv( GL_FRONT, GL_SHININESS, mat_shininess);
     glBegin(GL_QUADS);
-    //glColor3fv(&color[0]);
     getNormal3p(A,B,C);
     glVertex3fv(&A[0]);
     glVertex3fv(&B[0]);
